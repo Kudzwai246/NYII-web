@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import EoiForm from '../components/EoiForm';
 import { Cpu, Zap, Sprout, MonitorPlay, Share2 } from 'lucide-react';
 
@@ -197,7 +198,7 @@ export default function LandingPage() {
            <p className="mt-4 pt-4 border-t border-slate-200 space-x-4">
              <a href="mailto:support@nyii-project.info" className="hover:text-slate-900">Anonymous Project Inquiry</a>
              <span>&middot;</span>
-             <a href="/admin" className="hover:text-slate-900">Admin Login</a>
+             <Link to="/admin" className="hover:text-slate-900">Admin Login</Link>
            </p>
         </div>
       </footer>

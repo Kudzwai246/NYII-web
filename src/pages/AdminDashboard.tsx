@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { Stats, EoiSubmission } from '../types';
 import { ArrowLeft, Users, Download, MapPin, Target } from 'lucide-react';
 import { clsx, type ClassValue } from "clsx";
@@ -180,7 +181,7 @@ export default function AdminDashboard() {
          <div className="max-w-md bg-white p-8 rounded-xl border border-red-200">
            <p className="text-red-600 font-medium mb-4">{error || "Access Denied."}</p>
            <p className="text-sm text-slate-500 mb-6">You do not have permission to view this resource.</p>
-           <a href="/" className="text-sm underline text-slate-800">Return to Home</a>
+           <Link to="/" className="text-sm underline text-slate-800">Return to Home</Link>
          </div>
       </div>
      )
@@ -191,9 +192,9 @@ export default function AdminDashboard() {
       <header className="px-6 py-6 bg-white border-b border-slate-200">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-4">
-             <a href="/" className="text-slate-400 hover:text-slate-900">
+             <Link to="/" className="text-slate-400 hover:text-slate-900">
                <ArrowLeft className="w-5 h-5" />
-             </a>
+             </Link>
              <h1 className="font-semibold tracking-tight text-lg">NYII Demand Analytics</h1>
           </div>
           <button 
