@@ -1,0 +1,6 @@
+{
+  "name": "NYII Landing Page",
+  "description": "Expression of interest page for Norton Youth Innovation Institute. Gathers proof of demand while maintaining founder anonymity.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() { return request.auth != null; }
+    function isAdmin() { 
+      return isSignedIn() && request.auth.token.email_verified == true && request.auth.token.email == "kmadyavanhu@gmail.com";
+    }
+    function incoming() { return request.resource.data; }
+    function existing() { return resource.data; }
+    function isValidId(id) { return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); }
+
+    function isValidEoi(data) {
+      return data.keys().hasAll(["fullname", "location", "role", "interests", "likelyToEnroll", "wantsUpdates", "createdAt"]) &&
+             data.fullname is string && data.fullname.size() <= 100 &&
+             data.location is string && data.location.size() <= 100 &&
+             data.role is string && data.role.size() <= 60 &&
+             data.interests is list && data.interests.size() > 0 && data.interests.size() <= 10 && data.interests[0] is string &&
+             data.likelyToEnroll is string && data.likelyToEnroll.size() <= 50 &&
+             data.wantsUpdates is bool &&
+             data.createdAt == request.time &&
+             (data.get('phone', '') is string && data.get('phone', '').size() <= 30) &&
+             (data.get('email', '') is string && data.get('email', '').size() <= 100) &&
+             (data.get('ageGroup', '') is string && data.get('ageGroup', '').size() <= 30) &&
+             (data.get('comments', '') is string && data.get('comments', '').size() <= 1000);
+    }
+
+    match /eois/{userId} {
+      // Allow read if user is admin, or it's their own document
+      allow read: if isAdmin() || (isSignedIn() && request.auth.uid == userId);
+      // Allow list only if admin, or fetching own record
+      allow list: if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+      
+      // Allow create only if they don't have one and ID is their uid
+      allow create: if isSignedIn() && 
+                       request.auth.token.email_verified == true &&
+                       isValidId(userId) && 
+                       userId == request.auth.uid && 
+                       isValidEoi(incoming());
+                       
+      // Deny explicit updates or deletes for applicants (they can only submit once)
+      allow update, delete: if isAdmin();
+    }
+  }
+}

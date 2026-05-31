@@ -1,0 +1,29 @@
+{
+  "entities": {
+    "ExpressionOfInterest": {
+      "title": "Expression of Interest",
+      "description": "A submitted interest form",
+      "type": "object",
+      "properties": {
+        "fullname": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "location": { "type": "string" },
+        "role": { "type": "string" },
+        "ageGroup": { "type": "string" },
+        "interests": { "type": "array" },
+        "likelyToEnroll": { "type": "string" },
+        "wantsUpdates": { "type": "boolean" },
+        "comments": { "type": "string" },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["fullname", "location", "role", "interests", "likelyToEnroll", "wantsUpdates", "createdAt"]
+    }
+  },
+  "firestore": {
+    "eois/{userId}": {
+      "schema": { "$ref": "#/entities/ExpressionOfInterest" },
+      "description": "User interest submissions"
+    }
+  }
+}
