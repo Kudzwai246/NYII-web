@@ -153,6 +153,31 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Questions people may ask */}
+      <section className="px-6 py-20 md:px-12 max-w-4xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-medium mb-10 text-slate-900">Questions people may ask</h2>
+        <div className="space-y-8">
+          <div>
+            <h3 className="font-medium text-lg text-slate-900 mb-3">Who is the businessman?</h3>
+            <p className="text-slate-600 leading-relaxed">
+              The businessman is keeping his identity private during this pre-feasibility stage to ensure the focus remains entirely on data and community demand, not politics or personalities. Once the registry proves the numbers are real, the full governance board and advisors will step into the light for the formal launch.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-medium text-lg text-slate-900 mb-3">When does construction start?</h3>
+            <p className="text-slate-600 leading-relaxed">
+              The timeline is entirely up to us. The masterplan is ready for the town of Norton, Zimbabwe. The moment our registry hits the target numbers required to prove operational viability, the data goes straight to the escrow triggers, and site clearing begins. If we hit the numbers this month, progress happens this month.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-medium text-lg text-slate-900 mb-3">Is this a scam or a survey?</h3>
+            <p className="text-slate-600 leading-relaxed">
+              It's a strict pre-investment validation gate. Institutional capital doesn't build on hope; it builds on verified market demand. Your registration is your vote to bring this infrastructure to life instead of letting the investment go to another region.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Form / Expression of Interest */}
       <section id="register" className="px-6 py-24 md:px-12 max-w-5xl mx-auto">
         <div className="grid md:grid-cols-[1fr_1.25fr] gap-16">
