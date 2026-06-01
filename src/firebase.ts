@@ -57,6 +57,7 @@ export function handleFirestoreError(error: unknown, operationType: OperationTyp
 // Ensure the user is signed in with Google
 export const signInWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
+  provider.setCustomParameters({ prompt: 'select_account' });
   try {
     const result = await signInWithPopup(auth, provider);
     return result.user;

@@ -56,12 +56,12 @@ export default function LandingPage() {
             The Norton Youth Innovation Institute (NYII) is a proposed career-launch ecosystem for Zimbabwe's youth. Unlike traditional colleges, our core mission is to ensure every student transitions directly into employment or enterprise through partnerships, incubation, and placement support. Before we secure further investments, we are gathering proof of demand from the community.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href="#register" className="inline-flex items-center justify-center px-6 py-4 bg-slate-900 text-white font-medium rounded-md hover:bg-slate-800 transition-colors w-full sm:w-auto">
+            <button onClick={() => document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' })} className="inline-flex items-center justify-center px-6 py-4 bg-slate-900 text-white font-medium rounded-md hover:bg-slate-800 transition-colors w-full sm:w-auto">
               Register Interest
-            </a>
-            <a href="#why-this-matters" className="inline-flex items-center justify-center px-6 py-4 bg-[#F1F5F9] text-slate-900 font-medium rounded-md hover:bg-[#E2E8F0] transition-colors w-full sm:w-auto">
+            </button>
+            <button onClick={() => document.getElementById('why-this-matters')?.scrollIntoView({ behavior: 'smooth' })} className="inline-flex items-center justify-center px-6 py-4 bg-[#F1F5F9] text-slate-900 font-medium rounded-md hover:bg-[#E2E8F0] transition-colors w-full sm:w-auto">
               Read the Proposal
-            </a>
+            </button>
           </div>
         </div>
       </section>
